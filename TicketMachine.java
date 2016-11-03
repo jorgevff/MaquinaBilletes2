@@ -23,10 +23,12 @@ public class TicketMachine
      */
     public TicketMachine(int cost)
     {
-        price = cost;
+        price = cost;//int price = cost; no se puede
         balance = 0;
         total = 0;
     }
+    
+    
 
     /**
      * @Return The price of a ticket.
@@ -51,6 +53,10 @@ public class TicketMachine
      */
     public void insertMoney(int amount)
     {
+        /** esta instrucion me indica que si la cantidad (amount) es mayor que 0
+         * se suma al saldo(balance), se acumula, si no, al ser menor que 0 nos avisa que
+         * necesita un valor positivo, esto sale en el mensaje impreso
+         */
         if(amount > 0) {
             balance = balance + amount;
         }
@@ -81,6 +87,9 @@ public class TicketMachine
             // Reduce the balance by the prince.
             balance = balance - price;
         }
+        /** imprime un error diciendo que falta insertar la diferencia de dinero que falta para el precio
+         * del billete
+         */
         else {
             System.out.println("You must insert at least: " +
                                (price - balance) + " more cents.");
@@ -94,9 +103,25 @@ public class TicketMachine
      */
     public int refundBalance()
     {
-        int amountToRefund;
+        int amountToRefund;//variable local. 
         amountToRefund = balance;
         balance = 0;
         return amountToRefund;
     }
+    public int emptyMachine() 
+    {
+        int oldTotal; // ahí que crear una variable local para guardar lo que había
+        oldTotal = total; // guarda el total de la maquina
+
+    //El total de todas las monedas esta en el atributo total
+        total = 0; // vacia la maquina de todas la monedas
+        return oldTotal;// devuelve el total que había anteriormente al crear la variable local
+}
+
+
+  
+
+
+        
+    
 }
